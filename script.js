@@ -12,17 +12,21 @@ let ties = 0;
 function playRound(playerChoice = "", computerChoice = getComputerChoice()) {
   if (playerChoice.toLowerCase() === computerChoice) {
     ties++;
-    return ("Tie");
+    return "Tie";
   } else if (
     (playerChoice.toLowerCase() === "stone" && computerChoice === "scissor") ||
     (playerChoice.toLowerCase() === "paper" && computerChoice === "stone") ||
     (playerChoice.toLowerCase() === "scissor" && computerChoice === "paper")
   ) {
     playerScore++;
-    return ("You Win! " + playerChoice.toUpperCase() + " beats " + computerChoice);
+    return (
+      "You Win! " + playerChoice.toUpperCase() + " beats " + computerChoice
+    );
   } else {
     computerScore++;
-    return ("You Loose! " + computerChoice + " beats " + playerChoice.toUpperCase());
+    return (
+      "You Loose! " + computerChoice + " beats " + playerChoice.toUpperCase()
+    );
   }
 }
 
@@ -36,16 +40,23 @@ function playRound(playerChoice = "", computerChoice = getComputerChoice()) {
 // Play game DOM
 
 function returnScoreString() {
-  return ("Computer Score: "+computerScore+" Player Score: "+playerScore+" Ties: "+ties);  
+  return (
+    "Computer Score: " +
+    computerScore +
+    " Player Score: " +
+    playerScore +
+    " Ties: " +
+    ties
+  );
 }
 
-/** 
+/**
  * @param {Event & {target: Node}} event
  */
 
 function playerChooses(event) {
-  roundResult.textContent = (playRound(event.target.textContent));
-  score.textContent = returnScoreString();  
+  roundResult.textContent = playRound(event.target.textContent);
+  score.textContent = returnScoreString();
   // console.log();
 }
 
@@ -59,9 +70,8 @@ function bttn(aButton) {
 
 const roundResult = document.querySelector(".roundResult");
 const score = document.querySelector(".score");
-const btn = document.querySelectorAll('.btnHolder > button');
-btn.forEach(bttn)
-
+const btn = document.querySelectorAll(".btnHolder > button");
+btn.forEach(bttn);
 
 // roundResult.textContent
 
